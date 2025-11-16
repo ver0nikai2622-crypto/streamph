@@ -27,7 +27,7 @@ let showSidebar = document.getElementById('showSidebar');
               sidebar.style.display = 'none';
           });
 //end of nav
-const myAdLink = 'http://ak.stikroltiltoowi.net/4/8771585';
+const myAdLink = 'https://ey43.com/4/10192059';
 let latestMovieText = document.querySelector('.latest-text');
 const popularAPI = "https://api.themoviedb.org/3/movie/popular";
 const latestAPI = "https://api.themoviedb.org/3/discover/movie";
