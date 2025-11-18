@@ -1,45 +1,51 @@
 function checkHash() {
+
   if (window.location.hash !== '') {
     const movieId = window.location.hash.substring(1);
-    //
-    fetch(`${popularAPI}${saGitna}${myAPI}`)
+    
+    // Fetch the single movie detail by ID
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${myAPI}`)
       .then(res => res.json())
-      .then(data => {
-        const movie = data.results.find(movie => movie.id === parseInt(movieId));
-        if (movie) {
-          // Trigger the modal window
+      .then(movie => {
+        if (movie && movie.id) {
+          // Open Modal and populate data
           document.getElementById('main').style.display = 'none';
           document.getElementById('modal-window').style.display = 'flex';
+          
           playingPoster.src = `${originalImage}${movie.backdrop_path}`;
-          playingTitle.textContent = `${movie.title} (${movie.release_date.substring(0,4)})`;
+          playingTitle.textContent = `${movie.title} (${movie.release_date.substring(0, 4)})`;
           sypnosis.textContent = `${movie.overview}`;
-          const genreIds = movie.genre_ids;
-          const genreNames = genreIds.map(id => genreMap[id]).join(', ');
+          
+          // Use movie.genres for single movie detail endpoint
+          const genreNames = movie.genres.map(genre => genre.name).join(', ');
+          
           movieGenre.textContent = `Genre: ${genreNames}`;
           releaseDate.textContent = `Release Date: ${movie.release_date}`;
           playingRating.textContent = `Rating: ⭐${movie.vote_average.toFixed(1)}/10`;
+          
+          // Set the default iframe src
           myIframe.src = `https://111movies.com/movie/${movie.id}`;
+          
+        } else {
+          // Movie not found
+          console.error("Movie not found:", movie.status_message);
+          window.location.hash = ''; // Trigger the 'else' block below
         }
-        serverOne.addEventListener('click', ()=> {
-            myIframe.src = '';
-            myIframe.src = `https://111movies.com/movie/${movie.id}`;
-            window.open(myAdLink);
-        });
-        serverTwo.addEventListener('click', ()=> {
-            myIframe.src = '';
-            myIframe.src = `https://vidfast.pro/movie/${movie.id}`;
-            window.open(myAdLink);
-        });
-        serverThree.addEventListener('click', ()=> {
-            myIframe.src = '';
-            myIframe.src = `https://vidsrc.com/movie/${movie.id}`;
-            window.open(myAdLink);
-        });
-        copyLink.addEventListener('click', ()=> {
-            navigator.clipboard.writeText(window.location.href);
-        });
-        
+      })
+      .catch(err => {
+        // Handle any network errors
+        console.error('Error fetching movie details:', err);
+        window.location.hash = ''; // Trigger the 'else' block below
       });
+      
+  } else {
+    // This runs when the hash is empty (i.e., when the modal should be closed)
+    
+    // FIX for Iframe History Bug: Clear the iframe src immediately
+    document.getElementById('myIframe').src = ''; 
+    
+    document.getElementById('main').style.display = 'block';
+    document.getElementById('modal-window').style.display = 'none';
   }
 }
 document.addEventListener('DOMContentLoaded', ()=> {
@@ -52,16 +58,6 @@ document.querySelectorAll('.alertMuna').forEach((pinindot)=>{
     pinindot.addEventListener('click', ()=> {
         alert('Not Available For Now');
     });
-});
-window.addEventListener('hashchange', ()=> {
-    if(window.location.hash !== ''){
-        document.getElementById('main').style.display = 'none';
-        document.getElementById('modal-window').style.display = 'flex';
-    }else{
-    document.getElementById('myIframe').src = '';
-        document.getElementById('main').style.display = 'block';
-        document.getElementById('modal-window').style.display = 'none';
-    }
 });
 //navigation
 let showSidebar = document.getElementById('showSidebar');
@@ -96,6 +92,7 @@ let myIframe = document.getElementById('myIframe');
 let serverOne = document.getElementById('server1');
 let serverTwo = document.getElementById('server2');
 let serverThree = document.getElementById('server3');
+let download = document.getElementById('download');
 let copyLink = document.getElementById('copy');
 let playingPoster = document.getElementById('playingPoster');
 let playingTitle = document.getElementById('playingTitle');
@@ -130,77 +127,67 @@ window.open(`${myAdLink}`);
     document.getElementById('main').style.display = 'block';
 });
 
-function serverUno(fetchArgs, index){
-    serverOne.addEventListener('click', ()=> {
-        myIframe.src = '';
-        myIframe.src = `$https://111movies.com/movie/${fetchArgs.results[index].id}`;
-        serverOne.textContent = 'In Use...';
-        serverOne.style.color = 'white';
-        serverOne.style.backgroundColor = 'green';
-        //set other buttons
-        serverTwo.textContent = serverTwo.dataset.original;
-        serverTwo.style.color = '#d9d9d9';
-        serverTwo.style.backgroundColor = '#848484';
-        serverThree.textContent = serverThree.dataset.original;
-        serverThree.style.color = '#d9d9d9';
-        serverThree.style.backgroundColor = '#848484';
-    });
-}
-function serverDos(fetchArgs, index){
-    serverTwo.addEventListener('click', ()=> {
-        myIframe.src = '';
-        myIframe.src = `https://vidfast.pro/movie/${fetchArgs.results[index].id}`;
-        serverTwo.textContent = 'In Use...';
-        serverTwo.style.color = 'white';
-        serverTwo.style.backgroundColor = 'green';
-        //set other buttons
-        serverOne.textContent = serverOne.dataset.original;
-        serverOne.style.color = '#d9d9d9';
-        serverOne.style.backgroundColor = '#848484';
-        serverThree.textContent = serverThree.dataset.original;
-        serverThree.style.color = '#d9d9d9';
-        serverThree.style.backgroundColor = '#848484';
-    });
-}
-function serverTress(fetchArgs, index){
-    serverThree.addEventListener('click', ()=> {
-        myIframe.src = '';
-        myIframe.src = `https://vidsrc.xyz/embed/movie/${fetchArgs.results[index].id}`;
-        serverThree.textContent = 'In Use...';
-        serverThree.style.color = 'white';
-        serverThree.style.backgroundColor = 'green';
-        //set other buttons
-        serverOne.textContent = serverTwo.dataset.original;
-        serverOne.style.color = '#d9d9d9';
-        serverOne.style.backgroundColor = '#848484';
-        serverTwo.textContent = serverTwo.dataset.original;
-        serverTwo.style.color = '#d9d9d9';
-        serverTwo.style.backgroundColor = '#848484';
-    });
-}
-copyLink.addEventListener('click', ()=> {
-    navigator.clipboard.writeText(window.location.href);
-    copyLink.style.backgroundColor = 'green';
-    setTimeout(()=> {
-        copyLink.style.backgroundColor = '#848484';
-    }, 2000);
-});
-//source check
-function serverBtns(fetchArgs, index){
+// NEW Server & Copy Button Listeners
+// Put this code in your main JS file, not inside another function.
+
+serverOne.addEventListener('click', () => {
+  // Get the movie ID from the URL hash
+  const movieId = window.location.hash.substring(1);
+  if (movieId) {
+    myIframe.src = '';
+    myIframe.src = `https://111movies.com/movie/${movieId}`;
+    window.open(myAdLink);
+    
+    // Optional: Style the "In Use" button
     serverOne.textContent = 'In Use...';
-        serverOne.style.color = 'white';
-        serverOne.style.backgroundColor = 'green';
-        //set other btn back to default
-        serverTwo.textContent = serverTwo.dataset.original;
-        serverTwo.style.color = '#d9d9d9';
-        serverTwo.style.backgroundColor = '#848484';
-        serverThree.textContent = serverThree.dataset.original;
-        serverThree.style.color = '#d9d9d9';
-        serverThree.style.backgroundColor = '#848484';
-        serverUno(fetchArgs, index);
-        serverDos(fetchArgs, index);
-        serverTress(fetchArgs, index);
-}
+    serverOne.style.backgroundColor = 'green';
+    serverTwo.textContent = serverTwo.dataset.original || 'Server 2';
+    serverTwo.style.backgroundColor = '#848484';
+    serverThree.textContent = serverThree.dataset.original || 'Server 3';
+    serverThree.style.backgroundColor = '#848484';
+  }
+});
+
+serverTwo.addEventListener('click', () => {
+  const movieId = window.location.hash.substring(1);
+  if (movieId) {
+    myIframe.src = '';
+    myIframe.src = `https://vidfast.pro/movie/${movieId}`;
+    window.open(myAdLink);
+
+    // Optional: Style the "In Use" button
+    serverOne.textContent = serverOne.dataset.original || 'Server 1';
+    serverOne.style.backgroundColor = '#848484';
+    serverTwo.textContent = 'In Use...';
+    serverTwo.style.backgroundColor = 'green';
+    serverThree.textContent = serverThree.dataset.original || 'Server 3';
+    serverThree.style.backgroundColor = '#848484';
+  }
+});
+
+serverThree.addEventListener('click', () => {
+  const movieId = window.location.hash.substring(1);
+  if (movieId) {
+    myIframe.src = '';
+    myIframe.src = `https://vidsrc.com/movie/${movieId}`;
+    window.open(myAdLink);
+
+    // Optional: Style the "In Use" button
+    serverOne.textContent = serverOne.dataset.original || 'Server 1';
+    serverOne.style.backgroundColor = '#848484';
+    serverTwo.textContent = serverTwo.dataset.original || 'Server 2';
+    serverTwo.style.backgroundColor = '#848484';
+    serverThree.textContent = 'In Use...';
+    serverThree.style.backgroundColor = 'green';
+  }
+});
+copyLink.addEventListener('click', () => {
+  navigator.clipboard.writeText(window.location.href);
+  copyLink.style.backgroundColor = 'green';
+  setTimeout(() => {
+    copyLink.style.backgroundColor = '#848484';
+  }, 2000);
+});
 fetch(`${popularAPI}${saGitna}${myAPI}`)
  .then(res => res.json())
  .then(laman => {
@@ -228,11 +215,9 @@ fetch(`${popularAPI}${saGitna}${myAPI}`)
          releaseDate.textContent = `Release Date: ${laman.results[index].release_date}`;
          playingRating.textContent = `Rating: ⭐${laman.results[index].vote_average.toFixed(1)}/10`;
               myIframe.src = `https://111movies.com/movie/${laman.results[index].id}`;
-             
+              
          });
-         
-         //buttons sa server
-         serverBtns(laman, index);
+      
          
          
      });//dulo ng forEach
