@@ -15,6 +15,17 @@ function checkHash() {
           playingPoster.src = `${originalImage}${movie.backdrop_path}`;
           playingTitle.textContent = `${movie.title} (${movie.release_date.substring(0, 4)})`;
           sypnosis.textContent = `${movie.overview}`;
+          const plusLink = `${movie.title.replace(/\s+/g, '-')}-${movie.release_date.substring(0, 4)}`;
+          setTimeout(()=> {
+             downloadBtn.textContent = 'Download'; downloadBtn.addEventListener('click', ()=> {
+              window.open(`${downloadLink}download-${plusLink}`);
+              myIframe.src = '';
+              window.location.hash = '';
+              window.location.href = `${myAdLink}`;
+              
+          });
+          
+          },10000);
           
           // Use movie.genres for single movie detail endpoint
           const genreNames = movie.genres.map(genre => genre.name).join(', ');
@@ -74,6 +85,9 @@ let showSidebar = document.getElementById('showSidebar');
               sidebar.style.display = 'none';
           });
 //end of nav
+let downloadBtn = document.getElementById('download');
+let downloadLink = 'https://vdl.np-downloader.com/sdm_downloads/';
+//download-christmas-in-the-ballroom-2025/';
 const myAdLink = 'https://ey43.com/4/10192059';
 let latestMovieText = document.querySelector('.latest-text');
 const popularAPI = "https://api.themoviedb.org/3/movie/popular";
@@ -310,6 +324,7 @@ function karentPage(){
          releaseDate.textContent = `Release Date: ${sunod.results[index].release_date}`;
          playingRating.textContent = `Rating: ⭐${sunod.results[index].vote_average.toFixed(1)}/10`;
               myIframe.src = `https://111movies.com/movie/${sunod.results[index].id}`;
+              
              
          });
      });//dulo ng forEach
@@ -369,7 +384,10 @@ function searchFetch(){
          movieGenre.textContent = `Genre: ${genreNames}`;
          releaseDate.textContent = `Release Date: ${search.results[index].release_date}`;
          playingRating.textContent = `Rating: ⭐${search.results[index].vote_average.toFixed(1)}/10`;
-              myIframe.src = `https://111movies.com/movie/${sunod.results[index].id}`;
+              myIframe.src = `https://111movies.com/movie/${search.results[index].id}`;
+              downloadBtn.addEventListener('click', ()=> {
+              window.open(`${downloadLink}download-${search.results[index].title.replace(/\s+/g, '-')}-${search.results[index].release_date.substring(0, 4)}`)
+          });
              
          });
          movieTitle.forEach((titles, index) => {
