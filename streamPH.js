@@ -15,17 +15,6 @@ function checkHash() {
           playingPoster.src = `${originalImage}${movie.backdrop_path}`;
           playingTitle.textContent = `${movie.title} (${movie.release_date.substring(0, 4)})`;
           sypnosis.textContent = `${movie.overview}`;
-          const plusLink = `${movie.title.replace(/\s+/g, '-')}-${movie.release_date.substring(0, 4)}`;
-          setTimeout(()=> {
-             downloadBtn.textContent = 'Download'; downloadBtn.addEventListener('click', ()=> {
-              window.open(`${downloadLink}download-${plusLink}`);
-              myIframe.src = '';
-              window.location.hash = '';
-              window.location.href = `${myAdLink}`;
-              
-          });
-          
-          },10000);
           
           // Use movie.genres for single movie detail endpoint
           const genreNames = movie.genres.map(genre => genre.name).join(', ');
@@ -37,6 +26,17 @@ function checkHash() {
           // Set the default iframe src
           myIframe.src = `https://111movies.com/movie/${movie.id}`;
           unaSrc(movie.id);
+          const plusLink = `${movie.title.replace(/\s+/g, '-')}-${movie.release_date.substring(0, 4)}`;
+          setTimeout(()=>{
+              downloadBtn.style.backgroundColor = '#848484';
+            downloadBtn.addEventListener('click', ()=> {
+              window.open(`${downloadLink}download-${plusLink}`);
+              myIframe.src = '';
+              window.location.hash = '';
+              window.location.href = `${myAdLink}`;
+              
+          });
+          },10000);
           
           
         } else {
