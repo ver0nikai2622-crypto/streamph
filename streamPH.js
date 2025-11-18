@@ -25,6 +25,8 @@ function checkHash() {
           
           // Set the default iframe src
           myIframe.src = `https://111movies.com/movie/${movie.id}`;
+          unaSrc(movie.id);
+          
           
         } else {
           // Movie not found
@@ -126,9 +128,16 @@ window.open(`${myAdLink}`);
     modal.style.display = 'none';
     document.getElementById('main').style.display = 'block';
 });
-
-// NEW Server & Copy Button Listeners
-// Put this code in your main JS file, not inside another function.
+function unaSrc(movieId){
+    if(myIframe.src !== ''){
+    if(myIframe.src === `https://111movies.com/movie/${movieId}`){
+        serverOne.textContent = 'In Use...';
+        serverOne.style.backgroundColor = 'green';
+    }
+}else{
+    window.location.hash = '';
+    }
+}
 
 serverOne.addEventListener('click', () => {
   // Get the movie ID from the URL hash
@@ -169,7 +178,7 @@ serverThree.addEventListener('click', () => {
   const movieId = window.location.hash.substring(1);
   if (movieId) {
     myIframe.src = '';
-    myIframe.src = `https://vidsrc.com/movie/${movieId}`;
+    myIframe.src = `https://vidsrc-embed.ru/movie/${movieId}`;
     window.open(myAdLink);
 
     // Optional: Style the "In Use" button
