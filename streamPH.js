@@ -24,9 +24,11 @@ function checkHash() {
           playingRating.textContent = `Rating: ⭐${movie.vote_average.toFixed(1)}/10`;
           
           // Set the default iframe src
-          myIframe.src = `https://111movies.com/movie/${movie.id}`;
+          
+          myIframe.src = `https://aged-river-e48a.ver0nikai2622.workers.dev/?destination=https://moviesapi.club/movie/${movieId}`;
+          
           unaSrc(movie.id);
-          const plusLink = `${movie.title.replace(/\s+/g, '-')}-${movie.release_date.substring(0, 4)}`;
+          const plusLink = `${movie.title.replace(/\s+/g, '-').replace(/'/g, '')}-${movie.release_date.substring(0, 4)}`;
           setTimeout(()=>{
               downloadBtn.style.backgroundColor = '#848484';
             downloadBtn.addEventListener('click', ()=> {
@@ -138,13 +140,14 @@ const genreMap = {
   37: "Western"
 }
 closeBtn.addEventListener('click', ()=> {
-window.open(`${myAdLink}`);
+    window.open(`${myAdLink}`);
+    window.location.hash = '';
     modal.style.display = 'none';
     document.getElementById('main').style.display = 'block';
 });
 function unaSrc(movieId){
     if(myIframe.src !== ''){
-    if(myIframe.src === `https://111movies.com/movie/${movieId}`){
+    if(myIframe.src === `https://aged-river-e48a.ver0nikai2622.workers.dev/?destination=https://moviesapi.club/movie/${movieId}`){
         serverOne.textContent = 'In Use...';
         serverOne.style.backgroundColor = 'green';
     }
@@ -158,7 +161,7 @@ serverOne.addEventListener('click', () => {
   const movieId = window.location.hash.substring(1);
   if (movieId) {
     myIframe.src = '';
-    myIframe.src = `https://111movies.com/movie/${movieId}`;
+    myIframe.src = `https://aged-river-e48a.ver0nikai2622.workers.dev/?destination=https://moviesapi.club/movie/${movieId}`;
     window.open(myAdLink);
     
     // Optional: Style the "In Use" button
@@ -175,7 +178,7 @@ serverTwo.addEventListener('click', () => {
   const movieId = window.location.hash.substring(1);
   if (movieId) {
     myIframe.src = '';
-    myIframe.src = `https://vidfast.pro/movie/${movieId}`;
+    myIframe.src = `https://111movies.com/movie/${movieId}`;
     window.open(myAdLink);
 
     // Optional: Style the "In Use" button

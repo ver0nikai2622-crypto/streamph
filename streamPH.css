@@ -37,7 +37,9 @@ body{
   background-repeat: no-repeat;
   -webkit-mask-image: linear-gradient(to bottom, rgb(47, 47, 47) 80%, transparent);
     mask-image: linear-gradient(to bottom, rgb(47, 47, 47) 80%, transparent);
-   position: relative; /*para sa search bar*/
+   display: flex;
+   justify-content: center;
+   align-items: flex-end;
 }
 .logo {
   font-size: 25px;
@@ -49,7 +51,7 @@ body{
   background-size: cover;
 }
 .logo:after {
-  content: 'v2.2.6';
+  content: 'v2.5.8';
   font-size: 12px;
   color: #666;
   margin-left: 5px;
@@ -63,6 +65,7 @@ nav{
   top: 0;
   left: 0;
   width: 100%;
+  /*border: 1px solid red;*/
   z-index: 10;
 }
 nav ul{
@@ -115,22 +118,22 @@ nav li:first-child{
 }
 /*search*/
 .search-container{
-    height: 35px;
-    width: 250px;
+    height: 40px;
+    width: 100%;
     display: flex;
-    align-items: center;
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
+    justify-content: center;
+    /*border: 1px solid red;*/
+    margin-bottom: 50px;
+    
 }
 .search-container input{
-    margin-left: 30px;
     height: 100%;
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 50px;
-    background-color: #00000073;
+    width: 200px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    color: white;
+    background-color: #000000ce;
+    padding: 0 5px;
 }
 #search-input:focus{
     outline: none;
@@ -144,11 +147,11 @@ nav li:first-child{
 .search-container p{
     height: 100%;
     padding: 4px 8px;
-    border: 2px solid black;
-    border-radius: 50%;
-    position: absolute;
-    right: 0;
-    background-color: #858585;
+    /*border: 2px solid blue;*/
+    border-radius: 0 5px 5px 0;   
+    background-color: #000000ce;
+    display: flex;
+    align-items: center;
 }
 /*feature-movies-start*/
 #feature-movies{
