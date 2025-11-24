@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robot" content="index, follow">
+  <!-- facebook -->
+  <meta property="og:title" content="StreamPH: Watch Latest Movies without Ads">
+   <meta property="og:description" content="StreamPH is the best free movie streaming website!">
+   <meta property="og:image" content="https://streamph.site/Screenshot_2025-11-15-21-49-37-713_com.teejay.trebedit.png">                         
+   <meta property="og:url" content="https://streamph.site">
+   
+   <link rel="icon" href="favicon.png">
+   <title>Stream PH: Watch Latest Movies & Series</title>
+   <meta name="description" content="streamPH is the best free movie streaming website for everyone.">
+   <link rel="stylesheet" href="style.css">
+   <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest" ></script>
+</head>
+<body>
+    <nav class="nav">
+        <ul class="pcNav">
+            <li id="logo">StreamPH</li>
+            <li onclick="sorryAlert()" class="hideOnMobile">Genre</li>
+            <li onclick="sorryAlert()" class="hideOnMobile">Year</li>
+            <li onclick="sorryAlert()" class="hideOnMobile">Series</li>
+            <li onclick="sorryAlert()" class="hideOnMobile">About</li>
+            <li onclick="sorryAlert()" class="hideOnMobile">DCMA</li>
+            <li class="burger-menu"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></li>
+        </ul>
+        
+        <div class="search-container">
+            <input id="search-input" type="text" placeholder="Search Movie..."/>
+            <button id="search-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+            </button>
+        </div>
+        
+    </nav>
+    <div class="sidebar-wrapper">
+        <ul class="sidebar">
+            <li class="closeBtn"><svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></li>
+            <li class="genreBtn">Genre</li>
+            <li class="genreHide">Action</li>
+            <li class="genreHide">Adventure</li>
+            <li class="genreHide">Animation</li>
+            <li class="genreHide">Comedy</li>
+            <li class="genreHide">Crime</li>
+            <li class="genreHide">Documentary</li>
+            <li class="genreHide">Drama</li>
+            <li class="genreHide">Family</li>
+            <li class="genreHide">Fantasy</li>
+            <li class="genreHide">History</li>
+            <li class="genreHide">Horror</li>
+            <li class="genreHide">Music</li>
+            <li class="genreHide">Mystery</li>
+            <li class="genreHide">Romance</li>
+            <li class="genreHide">SciFi</li>
+            <li class="genreHide">Tv Movie</li>
+            <li class="genreHide">Thriller</li>
+            <li class="genreHide">War</li>
+            <li class="genreHide">Western</li>
+            <li class="yearBtn">Year</li>
+            <li class="yearHide">2025</li>
+            <li class="yearHide">2024</li>
+            <li class="yearHide">2023</li>
+            <li class="yearHide">2022</li>
+            <li class="yearHide">2021</li>
+            <li class="yearHide">2020</li>
+            <li class="yearHide">2019</li>
+            <li class="yearHide">2018</li>
+            <li class="yearHide">2017</li>
+            <li class="yearHide">2016</li>
+            <li class="yearHide">2015</li>
+            <li class="yearHide">2014</li>
+            <li class="yearHide">2013</li>
+            <li class="yearHide">2012</li>
+            <li class="yearHide">2011</li>
+            <li class="yearHide">2010</li>
+            <li class="yearHide">2009</li>
+            <li class="yearHide">2008</li>
+            <li class="yearHide">2007</li>
+            <li class="yearHide">2006</li>
+            <li class="yearHide">2005</li>
+            <li class="yearHide">2004</li>
+            <li class="yearHide">2003</li>
+            <li class="yearHide">2002</li>
+            <li class="yearHide">2001</li>
+            <li class="yearHide">2000</li>
+            <li class="seriesBtn">Series</li>
+            <li class="dmcaBtn">DMCA</li>
+        </ul>
+    </div>
+    
+    <div class="main">
+        <!-- para sa search -->
+        <div class="slider-searched">
+            <button class="scroll-btn left-btn" onclick="searchedScrollR()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-280 360-480l200-200v400Z"/></svg></button>
+            <div class="searched-wrapper">
+                <div class="searched-container">
+                    
+                    <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+             
+                    <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                    </div>
+             
+                 <div class="searched-movie">
+                    <img class="searched-poster" src=""/>
+                    <p class="searched-rating">⭐0.0/0</p>
+                    <h3 class="searched-title">Title</h3>
+                 </div>
+             
+                 <div class="searched-movie">
+                    <img class="searched-poster" src=""/>
+                    <p class="searched-rating">⭐0.0/0</p>
+                    <h3 class="searched-title">Title</h3>
+                 </div>
+             
+                    <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+             
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+             
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+             
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+             
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+             
+                    <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+                 
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+                 
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+                 
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+                 
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+                 
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+                 
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+                 
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+                 
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+                 
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+                 
+                     <div class="searched-movie">
+                        <img class="searched-poster" src=""/>
+                        <p class="searched-rating">⭐0.0/0</p>
+                        <h3 class="searched-title">Title</h3>
+                     </div>
+                    
+                     <div class="searched-movie">
+                         <button class="moreBtnSearched"><svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="#e3e3e3"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</button>
+                     </div>
+                 
+                </div>
+            </div>
+            <button class="scroll-btn right-btn" onclick="searchedScrollL()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M400-280v-400l200 200-200 200Z"/></svg></button>
+        </div>
+        
+        <!-- popular -->
+        <div class="slider-popular">
+            <button class="scroll-btn left-btn" onclick="popularScrollR()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-280 360-480l200-200v400Z"/></svg></button>
+            <div class="popular-wrapper">
+                <div class="popular-container">
+                    
+                    <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+             
+                    <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                    </div>
+             
+                 <div class="popular-movie">
+                    <img class="popular-poster" src=""/>
+                    <p class="popular-rating">⭐0.0/0</p>
+                    <h3 class="popular-title">Title</h3>
+                 </div>
+             
+                 <div class="popular-movie">
+                    <img class="popular-poster" src=""/>
+                    <p class="popular-rating">⭐0.0/0</p>
+                    <h3 class="popular-title">Title</h3>
+                 </div>
+             
+                    <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+             
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+             
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+             
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+             
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+             
+                    <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+                 
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+                 
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+                 
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+                 
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+                 
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+                 
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+                 
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+                 
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+                 
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+                 
+                     <div class="popular-movie">
+                        <img class="popular-poster" src=""/>
+                        <p class="popular-rating">⭐0.0/0</p>
+                        <h3 class="popular-title">Title</h3>
+                     </div>
+                    
+                     <div class="popular-movie">
+                         <button class="morePageBtn"><svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="#e3e3e3"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</button>
+                     </div>
+                 
+                </div>
+            </div>
+            <button class="scroll-btn right-btn" onclick="popularScrollL()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M400-280v-400l200 200-200 200Z"/></svg></button>
+        </div>
+        
+        <!-- Latest Movies -->
+        
+        
+        <div class="slider-latest">
+            <button class="scroll-btn left-btn" onclick="latestScrollR()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-280 360-480l200-200v400Z"/></svg></button>
+            <div class="latest-wrapper">
+                <div class="latest-container">
+                    
+                    <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+             
+                    <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                    </div>
+             
+                 <div class="latest-movie">
+                    <img class="latest-poster" src=""/>
+                    <p class="latest-rating">⭐0.0/0</p>
+                    <h3 class="latest-title">Title</h3>
+                 </div>
+             
+                 <div class="latest-movie">
+                    <img class="latest-poster" src=""/>
+                    <p class="latest-rating">⭐0.0/0</p>
+                    <h3 class="latest-title">Title</h3>
+                 </div>
+             
+                    <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+             
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+             
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+             
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+             
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+             
+                    <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+                 
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+                 
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+                 
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+                 
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+                 
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+                 
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+                 
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+                 
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+                 
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+                 
+                     <div class="latest-movie">
+                        <img class="latest-poster" src=""/>
+                        <p class="latest-rating">⭐0.0/0</p>
+                        <h3 class="latest-title">Title</h3>
+                     </div>
+                    
+                     <div class="latest-movie">
+                         <button class="moreBtnLatest"><svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="#e3e3e3"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</button>
+                     </div>
+                 
+                </div>
+            </div>
+            <button class="scroll-btn right-btn" onclick="latestScrollL()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M400-280v-400l200 200-200 200Z"/></svg></button>
+        </div>
+        
+        <!-- top Rated -->
+        
+        <div class="slider-topRated">
+            <button class="scroll-btn left-btn" onclick="topRatedScrollR()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-280 360-480l200-200v400Z"/></svg></button>
+            <div class="topRated-wrapper">
+                <div class="topRated-container">
+                    
+                    <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+             
+                    <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                    </div>
+             
+                 <div class="topRated-movie">
+                    <img class="topRated-poster" src=""/>
+                    <p class="topRated-rating">⭐0.0/0</p>
+                    <h3 class="topRated-title">Title</h3>
+                 </div>
+             
+                 <div class="topRated-movie">
+                    <img class="topRated-poster" src=""/>
+                    <p class="topRated-rating">⭐0.0/0</p>
+                    <h3 class="topRated-title">Title</h3>
+                 </div>
+             
+                    <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+             
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+             
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+             
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+             
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+             
+                    <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+                 
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+                 
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+                 
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+                 
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+                 
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+                 
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+                 
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+                 
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+                 
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+                 
+                     <div class="topRated-movie">
+                        <img class="topRated-poster" src=""/>
+                        <p class="topRated-rating">⭐0.0/0</p>
+                        <h3 class="topRated-title">Title</h3>
+                     </div>
+                    
+                     <div class="topRated-movie">
+                         <button class="moreBtnTopRated"><svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="#e3e3e3"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</button>
+                     </div>
+                 
+                </div>
+            </div>
+            <button class="scroll-btn right-btn" onclick="topRatedScrollL()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M400-280v-400l200 200-200 200Z"/></svg></button>
+        </div>
+        
+    </div>
+    
+    <div class="modal-window">
+        <button id="close-iframe">Close</button>
+        <div class="iframe-wrapper">
+            <span class="play-icon"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#e3e3e3"><path d="m380-300 280-180-280-180v360ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></span>
+            <iframe id="myIframe" src="" allowfullscreen></iframe>
+        </div>
+        <div class="playing-container">
+            <h3 id="playing-title">This is Movie Title</h3>
+                <ul>
+                    <li class="playing-year">1999</li>
+                    <li class="first-genre">Horror</li>
+                    <li class="isAdult">PG</li>
+                    <li class="copyLinkBtn"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e3e3e3"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg></li>
+                </ul>    
+        </div>
+        <button id="playBtn">Play</button>
+        <button id="downloadBtn">Download</button>
+        <span id="sypnosis">This is the Movie Sypnosis, sociis sociis definitionem praesent decore volumus risus nisi duis diam atqui populo suscipiantur primis semper inimicus lobortis qualisque conclusionemque oratio</span>
+        <ul class="full-info">
+            <li id="playing-rating">Rating:</li>
+            <li id="playing-genre">Genre:</li>
+            <li id="playing-releaseDate">Released Date:</li>
+            <li id="language">Languages:</li>
+            <li id="production">Production:</li>
+            <li id="budget">Budget:</li>
+            <li id="revenue">Revenue:</li>
+            <li id="cast">Cast:</li>
+        </ul>
+        
+        <div class="pinaka-baba">
+            <p><b>©2025 StreamPH</b> - Disclaimer: StreamPH does not host any files on it's servers.</p>
+
+      <p>All files or contents are hosted on third party websites. StreamPH does not accept responsibility for contents hosted on third party websites.</p>
+        </div>
+        
+    </div>
+    
+    <footer>
+      <p><b>©2025 StreamPH</b> - Disclaimer: StreamPH does not host any files on it's servers.</p>
+
+      <p>All files or contents are hosted on third party websites. StreamPH does not accept responsibility for contents hosted on third party websites.</p>
+    </footer>
+    
+    <script src="myjs.js"></script>
+</body>
+</html>
