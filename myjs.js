@@ -287,15 +287,17 @@ function checkHash(){
              firstGenre.textContent = movie.genres[0].name;
              isAdult.textContent = movie.adult ? "18+" : "PG√";
              copyLink.addEventListener('click', ()=> {
-               navigator.clipboard.writeText(`https://streamph.site/${newMovieId}`);
+               navigator.clipboard.writeText(`https://streamph.site/#${newMovieId}`);
             });
             playBtn.addEventListener('click', ()=> {
             document.querySelector('.play-icon').style.display = 'none';
                 myIframe.src = `${mySource}${movie.id}`;
+                window.open(myAd);
             });
             const plusLink = `${movie.title.replace(/\s+/g, '-').replace(/'/g, '')}-${movie.release_date.substring(0, 4)}`;
             downloadBtn.addEventListener('click', ()=> {
                 window.open(`${downloadLink}download-${plusLink}`);
+                window.location.href = myAd;
             });
                  sypnosis.textContent = `${movie.overview}`;
                  const genreNames = movie.genres.map(genre => genre.name).join(', ');
@@ -389,7 +391,7 @@ function posterFunc(posters, movieData){
         poster.classList.remove('skeleton');
         poster.src = `${posterPath}${movieData[index].poster_path}`;
         poster.addEventListener('click', ()=> {
-        window.location.hash = `${movieData[index].id}`;   
+        window.location.hash = `#${movieData[index].id}`;   
          scrollTo({top:0, behavior: 'smooth'});
          modal.style.display = 'flex';
          window.open(myAd);
