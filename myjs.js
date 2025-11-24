@@ -337,8 +337,8 @@ function checkHash(){
     document.querySelector('.play-icon').style.display = 'block';
     myIframe.src = ''; 
     
-    main.style.display = 'block';
-    modal.style.display = 'none';
+    //main.style.display = 'block';
+    //modal.style.display = 'none';
     }
 }
 document.addEventListener('DOMContentLoaded', ()=> {
@@ -352,10 +352,10 @@ function castFunc(movieCrewId){
      .then(res => res.json())
      .then(data => {
          // 1. Slice the 'cast' array to get only the first 10 objects
-         const topTenCast = data.cast.slice(0, 10); 
+         const topFiveCast = data.cast.slice(0, 5); 
 
          // 2. Map the names from the new, smaller array
-         const actorNames = topTenCast.map(actor => actor.name);
+         const actorNames = topFiveCast.map(actor => actor.name);
 
          // 3. Display the result
          cast.textContent = "Actors: " + actorNames.join(', ');
@@ -389,10 +389,10 @@ function posterFunc(posters, movieData){
         poster.classList.remove('skeleton');
         poster.src = `${posterPath}${movieData[index].poster_path}`;
         poster.addEventListener('click', ()=> {
-        window.open(myAd)
+        window.location.hash = `${movieData[index].id}`;   
          scrollTo({top:0, behavior: 'smooth'});
          modal.style.display = 'flex';
-            window.location.hash = `${movieData[index].id}`;
+         window.open(myAd);
            
         });
     });
