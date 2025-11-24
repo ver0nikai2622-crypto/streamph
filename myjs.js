@@ -283,8 +283,6 @@ function checkHash(){
                  playingTitle.textContent = `${movie.title}`;
                  playingTitle.textContent = `${movie.title}`;
              playingYear.textContent = `${movie.release_date.substring(0, 4)}`;
-             
-             firstGenre.textContent = movie.genres[0].name;
              isAdult.textContent = movie.adult ? "18+" : "PG√";
              copyLink.addEventListener('click', ()=> {
                navigator.clipboard.writeText(`https://streamph.site/#${newMovieId}`);
@@ -300,9 +298,16 @@ function checkHash(){
                 window.location.href = myAd;
             });
                  sypnosis.textContent = `${movie.overview}`;
-                 const genreNames = movie.genres.map(genre => genre.name).join(', ');
           
-          playingGenre.textContent = `Genre: ${genreNames}`;
+          if(movie.genres && movie.genres.length > 0){
+              firstGenre.textContent = movie.genres[0].name;
+              const genreNames = movie.genres.map(genre => genre.name).join(', ');
+              playingGenre.textContent = `Genre: ${genreNames}`;
+          }else{
+              firstGenre.textContent = "Movie";
+              playingGenre.textContent = "Genre: Not Listed";
+          }
+          
           playingReleaseDate.textContent = `Release Date: ${movie.release_date}`;
           playingRating.textContent = `Rating: ⭐${movie.vote_average.toFixed(1)}/10`;
           playBtn.addEventListener('click', ()=> {
@@ -317,11 +322,15 @@ function checkHash(){
           const langCode = movie.original_language;
             playingLanguage.textContent =
             `Language: ${languageMap[langCode] || langCode}`;
-            production.textContent = `Production: ${movie.production_companies[0].name}`;
+            if(movie.production_companies && movie.production_companies > 0){
+                production.textContent = `Production: ${movie.production_companies[0].name}`;
+            }else{
+                production.textContent = 'Production: N/A';
+            }
             playingBudget.textContent = `Budget: $ ${movie.budget > 0 ? movie.budget.toLocaleString('en-US') : 'Not Disclosed'}`;
             revenue.textContent = `Revenue: $ ${movie.revenue > 0 ? movie.revenue.toLocaleString('en-US') : 'Not Disclosed'}`;
            castFunc(newMovieId);
-           document.title = `${movie.title} (${movie.release_date})`;
+           document.title = `${movie.title} (${movie.release_date.substring(0, 4)})`;
             
              }else{
                  console.error("Movie not found:", movie.status_message);
@@ -393,7 +402,7 @@ function posterFunc(posters, movieData){
         poster.addEventListener('click', ()=> {
         window.location.hash = `#${movieData[index].id}`;   
          scrollTo({top:0, behavior: 'smooth'});
-         modal.style.display = 'flex';
+         //modal.style.display = 'flex';
          window.open(myAd);
            
         });
