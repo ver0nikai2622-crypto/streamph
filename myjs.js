@@ -287,7 +287,7 @@ function checkHash(){
              firstGenre.textContent = movie.genres[0].name;
              isAdult.textContent = movie.adult ? "18+" : "PG√";
              copyLink.addEventListener('click', ()=> {
-               navigator.clipboard.writeText(window.location.href);
+               navigator.clipboard.writeText(`https://streamph.site/${newMovieId}`);
             });
             playBtn.addEventListener('click', ()=> {
             document.querySelector('.play-icon').style.display = 'none';
