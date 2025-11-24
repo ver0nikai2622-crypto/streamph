@@ -304,11 +304,13 @@ function checkHash(){
           playingReleaseDate.textContent = `Release Date: ${movie.release_date}`;
           playingRating.textContent = `Rating: ⭐${movie.vote_average.toFixed(1)}/10`;
           playBtn.addEventListener('click', ()=> {
+          window.open(myAd);
               document.querySelector('.play-icon').style.display = 'none';
               myIframe.src = `https://aged-river-e48a.ver0nikai2622.workers.dev/?destination=https://moviesapi.club/movie/${newMovieId}`;
           });
           downloadBtn.addEventListener('click', ()=> {
               window.open(`${downloadLink}download-${plusLink}`);
+              window.location.href = myAd;
           });
           const langCode = movie.original_language;
             playingLanguage.textContent =
@@ -387,6 +389,7 @@ function posterFunc(posters, movieData){
         poster.classList.remove('skeleton');
         poster.src = `${posterPath}${movieData[index].poster_path}`;
         poster.addEventListener('click', ()=> {
+        window.open(myAd)
          scrollTo({top:0, behavior: 'smooth'});
          modal.style.display = 'flex';
             window.location.hash = `${movieData[index].id}`;
