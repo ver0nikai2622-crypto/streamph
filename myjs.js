@@ -337,8 +337,8 @@ function checkHash(){
     document.querySelector('.play-icon').style.display = 'block';
     myIframe.src = ''; 
     
-    //main.style.display = 'block';
-    //modal.style.display = 'none';
+    main.style.display = 'flex';
+    modal.style.display = 'none';
     }
 }
 document.addEventListener('DOMContentLoaded', ()=> {
