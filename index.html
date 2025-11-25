@@ -14,7 +14,7 @@
    <title>Stream PH: Watch Latest Movies & Series</title>
    <meta name="description" content="streamPH is the best free movie streaming website for everyone.">
    <link rel="stylesheet" href="style.css">
-   <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest" ></script>
+   <!-- <script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool@latest" ></script> -->
 </head>
 <body>
     <nav class="nav">
@@ -97,6 +97,10 @@
             <button class="scroll-btn left-btn" onclick="searchedScrollR()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-280 360-480l200-200v400Z"/></svg></button>
             <div class="searched-wrapper">
                 <div class="searched-container">
+                    
+                    <div class="searched-movie" id="prevPageConSearched">
+                         <button class="prevPageBtnSearched">Back</button>
+                     </div>
                     
                     <div class="searched-movie">
                         <img class="searched-poster" src=""/>
@@ -233,6 +237,10 @@
             <button class="scroll-btn left-btn" onclick="popularScrollR()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-280 360-480l200-200v400Z"/></svg></button>
             <div class="popular-wrapper">
                 <div class="popular-container">
+                    
+                    <div class="popular-movie" id="prevPageCon">
+                         <button class="prevPageBtn">Back</button>
+                     </div>
                     
                     <div class="popular-movie">
                         <img class="popular-poster" src=""/>
@@ -372,6 +380,10 @@
             <div class="latest-wrapper">
                 <div class="latest-container">
                     
+                    <div class="latest-movie" id="prevPageConLatest">
+                         <button class="prevPageBtnLatest">Back</button>
+                     </div>
+                    
                     <div class="latest-movie">
                         <img class="latest-poster" src=""/>
                         <p class="latest-rating">⭐0.0/0</p>
@@ -508,6 +520,10 @@
             <button class="scroll-btn left-btn" onclick="topRatedScrollR()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-280 360-480l200-200v400Z"/></svg></button>
             <div class="topRated-wrapper">
                 <div class="topRated-container">
+                    
+                    <div class="topRated-movie" id="prevPageConTopRated">
+                         <button class="prevPageBtnTopRated">Back</button>
+                     </div>
                     
                     <div class="topRated-movie">
                         <img class="topRated-poster" src=""/>

@@ -1,5 +1,4 @@
 const navBg = document.querySelector('.nav');
-const source = 'https://aged-river-e48a.ver0nikai2622.workers.dev/?destination=https://moviesapi.club/movie/';
 const myAd = 'https://ey43.com/4/10192059';
 const popularAPI = "https://api.themoviedb.org/3/discover/movie";
 const latestAPI = "https://api.themoviedb.org/3/discover/movie";
@@ -25,6 +24,8 @@ const urlOne = `${popularAPI}${saGitna}${myAPI}&with_genres=27&sort_by=popularit
 const urlTwo = `${latestAPI}${saGitna}${myAPI}`;
 const urlThree = `${topRatedAPI}${saGitna}${myAPI}`;
 const morePageBtn = document.querySelector('.morePageBtn');
+const prevPageCon = document.getElementById('prevPageCon');
+const prevPageBtn = document.querySelector('.prevPageBtn');
 const moreBtnLatest = document.querySelector('.moreBtnLatest');
 const moreBtnTopRated = document.querySelector('.moreBtnTopRated');
 const moreBtnSearched = document.querySelector('.moreBtnSearched');
@@ -94,6 +95,7 @@ function secondFetch(url){
 
 function morePageButton(pindutan){
     pindutan.addEventListener('click', ()=> {
+    prevPageCon.style.display = 'flex';
         onLoad(popularMovies, popularRating, popularTitle);
         currentCount++;
         let urlSecond = `${popularAPI}${saGitna}${myAPI}&with_genres=27&sort_by=popularity.desc&page=${currentCount}`;
@@ -101,11 +103,37 @@ function morePageButton(pindutan){
         secondFetch(urlSecond);
         popularScrollContainer.scrollBy({
             left: -5000,
-            behavior: "smooth"
+            behavior: "smooth"            
         });
         
     });
 }
+//check kung ung mga page ay nasa 1
+prevPageButton(prevPageBtn);
+function prevPageButton(pindutan){
+    if(currentCount >= 1){
+        pindutan.addEventListener('click', ()=> {
+        onLoad(popularMovies, popularRating, popularTitle);
+            currentCount--;
+            let urlSecondPrev = `${popularAPI}${saGitna}${myAPI}&with_genres=27&sort_by=popularity.desc&page=${currentCount}`;
+            secondFetch(urlSecondPrev);
+                popularScrollContainer.scrollBy({
+                left: 5000,
+                behavior: "smooth"              
+            });
+            prevButtonVisibility();
+        });
+    }
+}
+function prevButtonVisibility(){
+    if(currentCount <= 1){
+        prevPageCon.style.display = 'none';
+    }else{
+        prevPageCon.style.display = 'flex';
+    }
+}
+
+
 sapagFetchLatest(urlTwo)
 //sapagFetch ng latest
 function sapagFetchLatest(url){
@@ -134,8 +162,40 @@ function morePageBtnLatest(pindutan){
             left: -5000,
             behavior: "smooth"
         });
+        prevPageButtonLatestVisibility();
     });
 }
+
+const prevPageConLatest = document.getElementById('prevPageConLatest');
+const prevPageBtnLatest = document.querySelector('.prevPageBtnLatest');
+
+prevPageButtonLatest(prevPageBtnLatest);
+
+function prevPageButtonLatest(pindutan){
+    if(latestCurrentCount >= 1){
+        pindutan.addEventListener('click', ()=> {
+        onLoad(latestMovies, latestRating, latestTitle);
+            latestCurrentCount--;
+            let latestUrlPrev = `${popularAPI}${saGitna}${myAPI}&page=${latestCurrentCount}`
+        sapagFetchLatest(latestUrlPrev);            
+            latestScrollContainer.scrollBy({
+                left: 5000,
+                behavior: "smooth"           
+            });
+            prevPageButtonLatestVisibility();
+        });
+        
+    }
+}
+
+function prevPageButtonLatestVisibility(){
+    if(latestCurrentCount <= 1){
+        prevPageConLatest.style.display = 'none';
+    }else{
+        prevPageConLatest.style.display = 'flex';
+    }
+}
+
 sapagFetchTopRated(urlThree);
 function sapagFetchTopRated(url){
     fetch(url)
@@ -162,15 +222,44 @@ function morePageBtnTopRated(pindutan){
             left: -5000,
             behavior: "smooth"
         });
+        prevPageButtonTopRatedVisibility();
     });
 }
 
-// sapag fetch ng search
+const prevPageConTopRated = document.getElementById('prevPageConTopRated');
+const prevPageBtnTopRated = document.querySelector('.prevPageBtnTopRated');
+prevPageButtonTopRated(prevPageBtnTopRated);
 
+function prevPageButtonTopRated(pindutan){
+    if(topRatedCurrentCount >= 1){
+        pindutan.addEventListener('click', ()=> {
+            onLoad(topRatedMovies, topRatedRating, topRatedTitle);
+        topRatedCurrentCount--;
+        let topRatedUrlPrev = `${topRatedAPI}${saGitna}${myAPI}&page=${topRatedCurrentCount}`
+        sapagFetchTopRated(topRatedUrlPrev);
+        topRatedScrollContainer.scrollBy({
+                left: 5000,
+                behavior: "smooth"
+            });
+            prevPageButtonTopRatedVisibility();
+        });
+    }
+}
+
+function prevPageButtonTopRatedVisibility(){
+    if(topRatedCurrentCount <= 1){
+        prevPageConTopRated.style.display = 'none';
+    }else{
+        prevPageConTopRated.style.display = 'flex';
+    }
+}
+
+// sapag fetch ng search
+let keyword = '';
 let resultPage = 1;
 searchBtnClicked(searchBtn);
 function sapagFetchSearch(){
-let keyword = searchInput.value;
+keyword = searchInput.value;
     fetch(`${searchAPI}${myAPI}&query=${encodeURIComponent(keyword)}&page=${resultPage}`)
      .then(response => response.json())
      .then(data => {
@@ -198,14 +287,43 @@ function morePageBtnSearched(pindutan){
     pindutan.addEventListener('click', ()=> {
         onLoad(searchedMovies, searchedRating, searchedTitle);
         resultPage++;
-        //sapagFetchSearched();
+        sapagFetchSearch();
+        
         searchedScrollContainer.scrollBy({
             left: -5000,
             behavior: "smooth"
         });
+       prevPageButtonSearchedVisibility();
     });
 }
 //
+const prevPageConSearched = document.getElementById('prevPageConSearched');
+const prevPageBtnSearched = document.querySelector('.prevPageBtnSearched');
+
+prevPageButtonSearched(prevPageBtnSearched);
+function prevPageButtonSearched(pindutan){
+    if(resultPage >= 1){
+        pindutan.addEventListener('click', ()=> {
+            onLoad(searchedMovies, searchedRating, searchedTitle);
+            resultPage--;
+            sapagFetchSearch();
+            searchedScrollContainer.scrollBy({
+                left: 5000,
+                behavior: "smooth"
+            });
+            prevPageButtonSearchedVisibility();
+        });
+    }
+}
+
+function prevPageButtonSearchedVisibility(){
+    if(resultPage <= 1){
+        prevPageConSearched.style.display = 'none';
+    }else{
+        prevPageConSearched.style.display = 'flex';
+    }
+}
+
 //function nowPlaying(){
  //   playing.addEventListener('click')
 //}
@@ -289,6 +407,7 @@ function checkHash(){
             });
             playBtn.addEventListener('click', ()=> {
             document.querySelector('.play-icon').style.display = 'none';
+            myIframe.style.backgroundImage = '';
                 myIframe.src = `${mySource}${movie.id}`;
                 window.open(myAd);
             });
@@ -310,15 +429,7 @@ function checkHash(){
           
           playingReleaseDate.textContent = `Release Date: ${movie.release_date}`;
           playingRating.textContent = `Rating: ⭐${movie.vote_average.toFixed(1)}/10`;
-          playBtn.addEventListener('click', ()=> {
-          window.open(myAd);
-              document.querySelector('.play-icon').style.display = 'none';
-              myIframe.src = `https://aged-river-e48a.ver0nikai2622.workers.dev/?destination=https://moviesapi.club/movie/${newMovieId}`;
-          });
-          downloadBtn.addEventListener('click', ()=> {
-              window.open(`${downloadLink}download-${plusLink}`);
-              window.location.href = myAd;
-          });
+          
           const langCode = movie.original_language;
             playingLanguage.textContent =
             `Language: ${languageMap[langCode] || langCode}`;
@@ -377,6 +488,8 @@ function castFunc(movieCrewId){
 function onLoad(palitanMovies, palitanRating, palitanTitle){
     palitanMovies.forEach(loadPoster => {
         loadPoster.classList.add('skeleton');
+        //loadPoster.style.backgroundImage = '';
+        //loadPoster.style.backgroundColor = 'grey';
     });
     palitanRating.forEach(loadRating => {
         loadRating.textContent = '';

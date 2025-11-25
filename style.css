@@ -231,6 +231,21 @@ nav{
     background-color: transparent;
     border: none;
 }
+#prevPageConSearched{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+.prevPageBtnSearched{
+    font-size: 25px;
+    font-weight: bold;
+    padding: 5px 10px;
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 5px;
+}
 
 .scroll-btn{
     position: absolute;
@@ -300,11 +315,25 @@ nav{
     background-color: red;
 }
 .morePageBtn{
-    font-weight: bold;
     display: flex;
     align-items: center;
     background-color: transparent;
     border: none;
+}
+#prevPageCon{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+.prevPageBtn{
+    font-size: 25px;
+    font-weight: bold;
+    padding: 5px 10px;
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 5px;
 }
 
 .slider-popular{
@@ -408,7 +437,21 @@ nav{
     background-color: transparent;
     border: none;
 }
-
+#prevPageConLatest{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+.prevPageBtnLatest{
+    font-size: 25px;
+    font-weight: bold;
+    padding: 5px 10px;
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 5px;
+}
 .scroll-btn{
     position: absolute;
     top: 0; /* Center vertically */
@@ -494,6 +537,21 @@ nav{
     align-items: center;
     background-color: transparent;
     border: none;
+}
+#prevPageConTopRated{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}
+.prevPageBtnTopRated{
+    font-size: 25px;
+    font-weight: bold;
+    padding: 5px 10px;
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 5px;
 }
 
 .scroll-btn{
