@@ -516,7 +516,7 @@ function posterFunc(posters, movieData){
         window.location.hash = `#${movieData[index].id}`;   
          scrollTo({top:0, behavior: 'smooth'});
          //modal.style.display = 'flex';
-         window.open(myAd);
+         //window.open(myAd);
            
         });
     });
