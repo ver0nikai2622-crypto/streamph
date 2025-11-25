@@ -502,31 +502,39 @@ function onLoad(palitanMovies, palitanRating, palitanTitle){
 }
 
 function ratingFunc(rating, movieData){
-    rating.forEach((rate, index) => {
-        rate.classList.remove('skeleton');
-        rate.textContent = `⭐${movieData[index].vote_average.toFixed(1)}/10`;
+    rating.forEach((rate,index) => {
+        if(movieData[index] && movieData[index].vote_average){
+            rate.classList.remove('skeleton');
+            rate.textContent = `⭐${movieData[index].vote_average.toFixed(1)}/10`;
+        }else{
+            rate.textContent = 'N/A';
+        }
     });
 }
 
 function posterFunc(posters, movieData){
     posters.forEach((poster, index) => {
-        poster.classList.remove('skeleton');
-        poster.src = `${posterPath}${movieData[index].poster_path}`;
-        poster.addEventListener('click', ()=> {
-        window.location.hash = `#${movieData[index].id}`;   
-         scrollTo({top:0, behavior: 'smooth'});
-         //modal.style.display = 'flex';
-         //window.open(myAd);
-           
-        });
+        if(movieData[index] && movieData[index].poster_path){
+            poster.classList.remove('skeleton');
+            poster.src = `${posterPath}${movieData[index].poster_path}`;
+            poster.addEventListener('click', ()=> {
+                window.location.hash = `#${movieData[index].id}`;
+                scrollTo({top:0, behavior: 'smooth'});
+            });
+        }else{
+            poster.src = '';
+        }
     });
 }
 
-
 function titleFunc(titles, movieData){
     titles.forEach((title, index) => {
+        if(movieData[index] && movieData[index].title){
         title.classList.remove('skeleton');
-        title.textContent = `${movieData[index].title} (${movieData[index].release_date.substring(0, 4)})`;
+            title.textContent = `${movieData[index].title} (${movieData[index].release_date.substring(0, 4)})`
+        }else{
+            title.textContent = '';
+        }
     });
 }
 
