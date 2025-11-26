@@ -413,12 +413,12 @@ function checkHash(){
             document.querySelector('.play-icon').style.display = 'none';
             myIframe.style.backgroundImage = '';
                 myIframe.src = `${mySource}${movie.id}`;
-                //window.open(myAd);
+                window.open(myAd);
             });
             const plusLink = `${movie.title.replace(/\s+/g, '-').replace(/'/g, '').replace(/:/g, '')}-${movie.release_date.substring(0, 4)}`;
             downloadBtn.addEventListener('click', ()=> {
                 window.open(`${downloadLink}download-${plusLink}`);
-                //window.location.href = myAd;
+                window.location.href = myAd;
             });
                  sypnosis.textContent = `${movie.overview}`;
           
