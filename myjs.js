@@ -384,12 +384,15 @@ const languageMap = {
   // Add any other languages you need here
 };
 
+
 //checkHash
 function checkHash(){
     if(window.location.hash !== ''){
         const newMovieId = window.location.hash.substring(1);
         //hude search container
         
+        document.querySelector('.play-icon').style.display = 'block';
+        playBtn.style.backgroundColor = 'white';
        document.querySelector('.slider-searched').style.display = 'none';
         fetch(`https://api.themoviedb.org/3/movie/${newMovieId}?api_key=${myAPI}`)
          .then(res => res.json())
@@ -406,6 +409,7 @@ function checkHash(){
                navigator.clipboard.writeText(`https://streamph.site/#${newMovieId}`);
             });
             playBtn.addEventListener('click', ()=> {
+            playBtn.style.backgroundColor = 'gold';
             document.querySelector('.play-icon').style.display = 'none';
             myIframe.style.backgroundImage = '';
                 myIframe.src = `${mySource}${movie.id}`;
