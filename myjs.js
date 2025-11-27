@@ -343,7 +343,7 @@ const mySource = `https://vidrock.net/movie/`;
 
 //https://aged-river-e48a.ver0nikai2622.workers.dev/?destination=https://moviesapi.club/movie/
 const downloadBtn = document.getElementById('downloadBtn');
-const downloadLink = 'https://vdl.np-downloader.com/sdm_downloads/';
+const downloadLink = 'https://aged-river-e48a.ver0nikai2622.workers.dev/?destination=https://vdl.np-downloader.com/sdm_downloads/';
 //download-christmas-in-the-ballroom-2025/';
 const sypnopsis = document.getElementById('sypnosis');
 const playingRating = document.getElementById('playing-rating');
