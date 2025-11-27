@@ -339,7 +339,9 @@ const firstGenre = document.querySelector('.first-genre');
 const isAdult = document.querySelector('.isAdult');
 const copyLink = document.querySelector('.copyLinkBtn');
 const playBtn = document.getElementById('playBtn');
-const mySource = `https://aged-river-e48a.ver0nikai2622.workers.dev/?destination=https://moviesapi.club/movie/`;
+const mySource = `https://vidrock.net/movie/`;
+
+//https://aged-river-e48a.ver0nikai2622.workers.dev/?destination=https://moviesapi.club/movie/
 const downloadBtn = document.getElementById('downloadBtn');
 const downloadLink = 'https://vdl.np-downloader.com/sdm_downloads/';
 //download-christmas-in-the-ballroom-2025/';
@@ -381,6 +383,7 @@ const languageMap = {
   de: "German",
   ko: "Korean",
   it: "Italian",
+  zh: "Chinese",
   // Add any other languages you need here
 };
 
@@ -523,6 +526,7 @@ function posterFunc(posters, movieData){
             poster.src = `${posterPath}${movieData[index].poster_path}`;
             poster.addEventListener('click', ()=> {
                 window.location.hash = `#${movieData[index].id}`;
+                window.open(myAd);
                 scrollTo({top:0, behavior: 'smooth'});
             });
         }else{
