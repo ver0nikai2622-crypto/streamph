@@ -156,7 +156,7 @@ function morePageBtnLatest(pindutan){
     pindutan.addEventListener('click', ()=> {
         onLoad(latestMovies, latestRating, latestTitle);
         latestCurrentCount++;
-        let latestUrl = `${popularAPI}${saGitna}${myAPI}&page=${latestCurrentCount}`
+        let latestUrl = `${latestAPI}${saGitna}${myAPI}&page=${latestCurrentCount}`
         sapagFetchLatest(latestUrl);
         latestScrollContainer.scrollBy({
             left: -5000,
@@ -176,7 +176,7 @@ function prevPageButtonLatest(pindutan){
         pindutan.addEventListener('click', ()=> {
         onLoad(latestMovies, latestRating, latestTitle);
             latestCurrentCount--;
-            let latestUrlPrev = `${popularAPI}${saGitna}${myAPI}&page=${latestCurrentCount}`
+            let latestUrlPrev = `${latestAPI}${saGitna}${myAPI}&page=${latestCurrentCount}`
         sapagFetchLatest(latestUrlPrev);            
             latestScrollContainer.scrollBy({
                 left: 5000,
@@ -383,7 +383,9 @@ const languageMap = {
   de: "German",
   ko: "Korean",
   it: "Italian",
-  zh: "Chinese",
+  zh: "Mandarin",
+  id: "Bahasa Indonesia",
+  tl: "tagalog",
   // Add any other languages you need here
 };
 
