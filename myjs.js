@@ -409,7 +409,7 @@ function checkHash(){
                  playingTitle.textContent = `${movie.title}`;
                  playingTitle.textContent = `${movie.title}`;
              playingYear.textContent = `${movie.release_date.substring(0, 4)}`;
-             isAdult.textContent = movie.adult ? "18+" : "PG√";
+             isAdult.textContent = movie.adult ? "18+" : "Rated";
              copyLink.addEventListener('click', ()=> {
                navigator.clipboard.writeText(`https://streamph.site/#${newMovieId}`);
             });
